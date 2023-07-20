@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "9d3a1d7e-c341-4ebf-b885-8f99bb12c6b1",
+		"name": "file-loader",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10258875"
+	},
+	"item": [
+		{
+			"name": "Upload documents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "documents",
+							"type": "file",
+							"src": [
+								"/home/diego/Downloads/Carta de presentación (6).pdf",
+								"/home/diego/Downloads/Carta de presentación (5).pdf",
+								"/home/diego/Downloads/Carta de presentación (4).pdf"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/documents/hash?hashType=SHA-256",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"documents",
+						"hash"
+					],
+					"query": [
+						{
+							"key": "hashType",
+							"value": "SHA-256"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"username1\",\n    \"password\": \"password1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch document by hash",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/documents?hash=dd03a6ad5aaced2d7803c4a5ba1a7d0bd4ae1b7259fc1966ea07e6e2ccd88bc38b0609f0f52b8e8c38bc7204d3286916d5a558261d7f8c837e472f5beb420c92&hashType=SHA-512",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"documents"
+					],
+					"query": [
+						{
+							"key": "hash",
+							"value": "dd03a6ad5aaced2d7803c4a5ba1a7d0bd4ae1b7259fc1966ea07e6e2ccd88bc38b0609f0f52b8e8c38bc7204d3286916d5a558261d7f8c837e472f5beb420c92"
+						},
+						{
+							"key": "hashType",
+							"value": "SHA-512"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List documents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/documents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
